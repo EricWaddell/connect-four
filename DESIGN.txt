@@ -1,0 +1,11 @@
+I was unsure about the instructions saying no external dependencies. I decided to avoid all external dependencies entirely as this is an interview question.
+In real code I would probably format the properties file as yaml instead and use a json library like jackson to manage it. It also means my unit tests are garbage without a proper testing framework and
+without a proper mocking framework. In real life I'd probably have junit and mockito or jmockit. The ConnectFour class is trivial, Player is an enum that does no processing, Game holds a fair bit of state and
+is mostly private, so only Board has any level of testing.
+
+I was considering adding additional configuration like command line arguments instead of just a properties file. But the longer I thought about it I realized I would probably just end up reimplementing
+all the ways of externally managing configuration from Spring. In the end I decided I would have defaults in the Board file in case the properties file is missing or broken and a properties file in
+src/main/resources
+
+Also, many of the functions in this implementation are not stateless as would be recommended for most web services. Since this is a game its generally a better idea to allow functions
+to manipulate the state directly.

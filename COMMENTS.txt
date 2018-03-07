@@ -1,0 +1,4 @@
+I just wanted to comment a bit that many things I'm doing for this code is in fact wrong if we're developing a game. A lot of large software services end up bound by i/o (well, depending on design many factors
+can bound the services) but for games there's a lot more concern for things like render batching (we have no graphics) and cache locality (this can affect our services too, but frequently we move caching concerns
+out to a specialized service like Redis or memcached). This code is written to try to demonstrate readability, and flexibility. Normally I would also try to show some competency with data structures as well,
+but the current code doesn't really suit existing structures since the closest would be a list of stacks, but the java implementation of stacks makes arbitrary access (to facilitate win checking) require iteration.
